@@ -1,0 +1,114 @@
+<html>
+
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Famo.us ToDo App</title>
+        <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<link rel="stylesheet" type="text/css" href="css/famous.css" />
+        <link rel="stylesheet" type="text/css" href="css/app.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+        <link rel="stylesheet" type="text/css" href="css/famous_styles.css" />
+		
+		<script src="https://cdn.pubnub.com/pubnub-dev.js"></script>
+		<script type="text/javascript">
+
+    var PUBNUB_demo = PUBNUB.init({
+        publish_key: 'pub-c-1b4f0648-a1e6-4aa1-9bae-aebadf76babe',
+        subscribe_key: 'sub-c-e9fadae6-f73a-11e4-af94-02ee2ddab7fe'
+    });
+	
+	
+
+</script>
+		<script type="text/javascript" src="js/main.js"></script>
+		
+</head>
+
+
+<body style="padding:10px">
+
+<div class="header"><h2>Famo.us ToDO App</h2></div>
+
+<div id="userSelectionContainer" class="userselectionStyle">
+<!-- select user  -->
+<select id='selectUser'>
+	
+	<option value="0">Select User</option>
+				<option value="Peter">Peter</option>
+				<option value="Eric">Eric</option>
+				<option value="Sam">Sam</option>
+</select>
+<button id="submitUserSelection" onclick="markUserSelected()">Submit</button>
+</div>
+<div id="projectBioContainer" class="summaryTable">
+<table  >
+<tbody id="projectDataTable">
+	<tr>
+		<td><b>Project Name:</b></td>
+		<td> Todo Demo</td>
+	</tr>
+	<tr>
+		<td><b>Collaborators</b></td>
+		<td> Peter, Eric, Sam</td>
+	</tr>
+	<tr>
+		<td><b>Last Update:</b></td>
+		<td id='LastUpdateTimeStamp'> </td>
+	</tr>
+	</tbody>
+</table>
+<button id="btnToggleTaskList" class="btnToogleTasks" onclick="toggleListVisibility(1)">ToDo(0/0)</button>
+</div>
+<div id="taskListings" style="display:none" >
+	<table style="width:100%">
+		<th>
+			
+			<td style="float:right">
+				<button onclick="performAddNewTaskAction()">ADD New</button>
+				<button onclick="toggleListVisibility(2)">Back</button>
+			</td>
+		</th>
+	</table>
+	<br>
+	<!-- start new task list div -->
+	<div id="addNewTaskDiv" class="white_content">
+		<div id="titleContainer" >
+			<div style="width:60%" id="actionTypeTitle">New Task</div>
+			<button  onclick="hideDialog()"> back</button>
+		</div>
+		<div>
+			Description
+			<input type="checkbox" id="newTaskCheckStatus">Done</input>
+		</div>
+		<br>
+		<textarea id="taskDescription" rows="4" cols="50" style="width:100%"></textarea>
+		<br>
+		<div id="titleContainer" >
+		<br>
+		Owner
+			<select id='selectedOwner'>
+				<option value="0">Select User</option>
+				<option value="Peter">Peter</option>
+				<option value="Eric">Eric</option>
+				<option value="Sam">Sam</option>
+			</select>
+		<button id="addTaskButton" style="float:right" onclick="addNewTask()" > Add</button>
+		</div>
+	</div> <!-- end new task List-->
+	<!--  show tasks as list-->
+	<div id="taskSummary_1" style="padding:10px">
+		<table style="width:100%" id="tasksLists">
+			
+		</table>
+	</div>
+	<!-- end the available tasks list -->	
+</div>
+<div id="fade" class="black_overlay"></div>
+
+</body>
+
+</html>
